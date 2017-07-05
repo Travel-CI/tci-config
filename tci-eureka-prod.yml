@@ -1,0 +1,16 @@
+configuration:  
+  projectName: tci-eureka
+
+server:
+  port: 8000
+
+management:
+  security:
+    enabled: false
+
+eureka:
+  instance:
+    hostname: travelci.cloudapp.net
+  client:
+    registerWithEureka: false
+    fetchRegistry: false

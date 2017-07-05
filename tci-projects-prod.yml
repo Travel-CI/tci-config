@@ -1,0 +1,37 @@
+configuration:  
+  projectName: tci-projects
+
+server:
+  port: 8080
+
+management:
+  security:
+    enabled: false
+
+eureka:
+  instance:
+    metadataMap:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  server:
+    enabled: true
+  client:
+    serviceUrl:
+      defaultZone: http://travelci-eureka:8000/eureka/
+    registerWithEureka: true
+
+info:
+  repositories:
+    location: /usr/app/travel-ci/
+  services:
+    commands: "http://tci-commands"
+    logger: "http://tci-logger"
+
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://travelci-database:5432/travelci
+    username: tciprojects
+    password: tciprojects
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect

@@ -1,0 +1,30 @@
+configuration:  
+  projectName: tci-docker-runner
+
+server:
+  port: 8080
+
+management:
+  security:
+    enabled: false
+
+eureka:
+  instance:
+    metadataMap:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  server:
+    enabled: true
+  client:
+    serviceUrl:
+      defaultZone: http://travelci-eureka:8000/eureka/
+    registerWithEureka: true
+
+info:
+  docker:
+    windows:
+      uri: https://192.168.99.100:2376
+      cert: "C:\\Users\\Julien\\.docker\\machine\\certs"
+    unix:
+      uri: http://10.1.0.4:2375
+    projectFolderInContainer: /app
