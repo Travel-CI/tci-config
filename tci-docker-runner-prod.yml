@@ -21,6 +21,8 @@ eureka:
     registerWithEureka: true
 
 info:
+  services:
+    logger: http://tci-logger
   docker:
     uri: http://10.1.0.4:2375
     projectFolderInContainer: /app
