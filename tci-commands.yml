@@ -22,7 +22,8 @@ eureka:
 
 info:
   services:
-    docker-runner: "http://tci-docker-runner"
+    logger: http://tci-logger
+    docker-runner: http://tci-docker-runner
 
 spring:
   datasource:

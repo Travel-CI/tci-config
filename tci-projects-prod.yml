@@ -24,8 +24,8 @@ info:
   repositories:
     location: /usr/app/travel-ci/
   services:
-    commands: "http://tci-commands"
-    logger: "http://tci-logger"
+    commands: http://tci-commands
+    logger: http://tci-logger
 
 spring:
   datasource:

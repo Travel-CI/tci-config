@@ -44,5 +44,4 @@ github:
 
 info:
   services:
-    projects: "http://tci-projects"
-    logger: "http://tci-logger"
+    projects: http://tci-projects
