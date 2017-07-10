@@ -27,6 +27,14 @@ zuul:
       path: /commands/**
       serviceId: tci-commands
       stripPrefix: false
+    builds:
+      path: /builds/**
+      serviceId: tci-logger
+      stripPrefix: false
+    steps:
+      path: /steps/**
+      serviceId: tci-logger
+      stripPrefix: false
 
 hystrix:
   command:
