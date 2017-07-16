@@ -23,6 +23,7 @@ eureka:
 info:
   services:
     logger: http://tci-logger
+    notifications: http://tci-notifications
   docker:
     uri: http://localhost:2375
     projectFolderInContainer: /app
