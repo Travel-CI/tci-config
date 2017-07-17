@@ -15,3 +15,13 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8000/eureka/
     registerWithEureka: true
+
+info:
+  email:
+    host: "smtp.gmail.com"
+    port: "465"
+    socketFactory: "javax.net.ssl.SSLSocketFactory"
+    auth: "true"
+    tls: "true"
+    username: "travelci4al@gmail.com"
+    password: "4altravelci"
