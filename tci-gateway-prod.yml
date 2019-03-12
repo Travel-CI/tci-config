@@ -1,0 +1,82 @@
+configuration:  
+  projectName: tci-gateway
+
+server:
+  port: 8001
+
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: tci-webhook
+        uri: lb://tci-webhook
+        predicates:
+        - Path=/api/webhook/**
+        filters:
+        - RewritePath=/api/(?<segment>.*), /$\{segment}
+
+      - id: tci-projects
+        uri: lb://tci-projects
+        predicates:
+        - Path=/api/projects/**
+        filters:
+        - RewritePath=/api/(?<segment>.*), /$\{segment}
+        
+      - id: tci-commands
+        uri: lb://tci-commands
+        predicates:
+        - Path=/api/commands/**
+        filters:
+        - RewritePath=/api/(?<segment>.*), /$\{segment}
+
+      - id: tci-docker-runner
+        uri: lb://tci-docker-runner
+        predicates:
+        - Path=/api/docker/**
+        filters:
+        - RewritePath=/api/(?<segment>.*), /$\{segment}
+
+      - id: tci-notifications
+        uri: lb://tci-notifications
+        predicates:
+        - Path=/api/notifications/**
+        filters:
+        - RewritePath=/api/(?<segment>.*), /$\{segment}
+
+      - id: tci-logger-builds
+        uri: lb://tci-logger
+        predicates:
+        - Path=/api/builds/**
+        filters:
+        - RewritePath=/api/(?<segment>.*), /$\{segment}
+
+      - id: tci-logger-steps
+        uri: lb://tci-logger
+        predicates:
+        - Path=/api/steps/**
+        filters:
+        - RewritePath=/api/(?<segment>.*), /$\{segment}
+
+      discovery:
+        locator:
+          enabled: true
+
+eureka:
+  instance:
+    metadataMap:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  server:
+    enabled: true
+  client:
+    serviceUrl:
+      defaultZone: http://travelci-eureka:8000/eureka/
+    registerWithEureka: true
