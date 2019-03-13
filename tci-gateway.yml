@@ -37,13 +37,6 @@ spring:
         filters:
         - RewritePath=/api/(?<segment>.*), /$\{segment}
 
-      - id: tci-docker-runner
-        uri: lb://tci-docker-runner
-        predicates:
-        - Path=/api/docker/**
-        filters:
-        - RewritePath=/api/(?<segment>.*), /$\{segment}
-
       - id: tci-notifications
         uri: lb://tci-notifications
         predicates:
